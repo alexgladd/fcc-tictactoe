@@ -1,0 +1,26 @@
+.App {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: 1fr 60vw 1fr;
+  grid-template-rows: 60px 60px 60vh 1fr;
+  grid-template-areas:
+    "header header header"
+    "..... controls ....."
+    "...... board ......."
+    "footer footer footer";
+}
+
+.Header {
+  grid-area: header;
+  text-align: center;
+}
+
+.Controls {
+  grid-area: controls;
+  text-align: center;
+}
+
+.Footer {
+  grid-area: footer;
+  text-align: center;
+}

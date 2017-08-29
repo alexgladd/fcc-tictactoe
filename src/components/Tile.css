@@ -1,0 +1,17 @@
+.Tile {
+  display: table-cell;
+  font-family: 'Permanent Marker', cursive;
+  background-color: white;
+  padding: 12px;
+  font-size: 8vw;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.Tile-Clickable {
+  cursor: pointer;
+  background-color: #eee;
+}
+.Tile-Clickable:hover {
+  background-color: #ddd;
+}
