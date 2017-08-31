@@ -6,7 +6,7 @@ import { gameStates, gamePlayers, MARK_X, MARK_O } from '../constants';
 import './Game.css';
 
 import Minimax from 'tic-tac-toe-minimax';
-const { ComputerMove, GameStep } = Minimax;
+const { GameStep } = Minimax;
 
 class Game extends React.Component {
   constructor(props) {
@@ -110,8 +110,6 @@ class Game extends React.Component {
       // set timeout for computer move
       setTimeout(() => {
         // apply minimax game step
-        const moveIdx = ComputerMove(this.state.board, this.state.symbols,
-          this.state.difficulty);
         const result = GameStep(this.state.board, this.state.symbols,
           this.state.difficulty);
 
