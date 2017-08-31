@@ -1,12 +1,11 @@
 .App {
   display: grid;
   grid-gap: 12px;
-  grid-template-columns: 1fr 60vw 1fr;
-  grid-template-rows: 60px 60px 60vh 1fr;
+  grid-template-columns: 1fr 660px 1fr;
+  grid-template-rows: 60px 660px 1fr;
   grid-template-areas:
     "header header header"
-    "..... controls ....."
-    "...... board ......."
+    "....... game ......."
     "footer footer footer";
 }
 

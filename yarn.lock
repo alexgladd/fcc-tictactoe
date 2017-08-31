@@ -5941,6 +5941,10 @@ thunky@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-0.1.0.tgz#bf30146824e2b6e67b0f2d7a4ac8beb26908684e"
 
+tic-tac-toe-minimax@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/tic-tac-toe-minimax/-/tic-tac-toe-minimax-1.0.8.tgz#4b9966a8eb9c02a8b1ad9afba36b9c66c13ab42c"
+
 time-stamp@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-2.0.0.tgz#95c6a44530e15ba8d6f4a3ecb8c3a3fac46da357"
