@@ -2,6 +2,7 @@ import React from 'react';
 import GameBoard from './GameBoard';
 import MarkChooser from './MarkChooser';
 import TurnTracker from './TurnTracker';
+import GameOver from './GameOver';
 import { gameStates, gamePlayers, MARK_X, MARK_O } from '../constants';
 import './Game.css';
 
@@ -19,8 +20,8 @@ class Game extends React.Component {
     };
 
     this.handlePlayerMarkChosen = this.handlePlayerMarkChosen.bind(this);
-    this.handleTurnStart = this.handleTurnStart.bind(this);
     this.handleTileClick = this.handleTileClick.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   handlePlayerMarkChosen(playerMark) {
@@ -40,13 +41,6 @@ class Game extends React.Component {
     });
   }
 
-  handleTurnStart(currentTurn) {
-    this.setState({
-      gameState: gameStates.playing,
-      currentTurn
-    });
-  }
-
   handleTileClick(tileIdx) {
     // console.log("Game got clicked tile event with index " + tileIdx);
 
@@ -61,7 +55,7 @@ class Game extends React.Component {
         (result.winner === 'draw' && this.isBoardFull(newBoard))) {
       this.setState({
         gameState: gameStates.gameOver,
-        winner: result.winner,
+        winner: this.getWinner(result.winner),
         board: newBoard,
         currentTurn: gamePlayers.computer
       });
@@ -71,6 +65,15 @@ class Game extends React.Component {
         currentTurn: gamePlayers.computer
       });
     }
+  }
+
+  handleReset() {
+    this.setState({
+      gameState: gameStates.newGame,
+      board: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+      winner: null,
+      currentTurn: null
+    });
   }
 
   isBoardFull(board) {
@@ -85,6 +88,16 @@ class Game extends React.Component {
     return count === 9;
   }
 
+  getWinner(winner) {
+    if (winner === 'huPlayer') {
+      return gamePlayers.player;
+    } else if (winner === 'aiPlayer') {
+      return gamePlayers.computer;
+    } else {
+      return winner;
+    }
+  }
+
   get controlsComponent() {
     switch (this.state.gameState) {
       case gameStates.newGame:
@@ -92,7 +105,7 @@ class Game extends React.Component {
       case gameStates.playing:
         return <TurnTracker turn={this.state.currentTurn} />;
       case gameStates.gameOver:
-        return <div>Game Over!</div>;
+        return <GameOver winner={this.state.winner} onReset={this.handleReset} />;
       default:
         return null;
     }
@@ -131,7 +144,7 @@ class Game extends React.Component {
         if (result.winner) {
           this.setState({
             gameState: gameStates.gameOver,
-            winner: result.winner,
+            winner: this.getWinner(result.winner),
             board: result.board,
             currentTurn: gamePlayers.player
           });

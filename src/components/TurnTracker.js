@@ -8,7 +8,7 @@ const TurnTracker = (props) => {
   if (props.turn === gamePlayers.player) {
     label = "It's your turn!";
   } else {
-    label = "Waiting for computer's turn...";
+    label = "Waiting for the computer's turn...";
   }
 
   return (
