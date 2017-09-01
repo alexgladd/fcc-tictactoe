@@ -48,7 +48,7 @@ class Game extends React.Component {
   }
 
   handleTileClick(tileIdx) {
-    console.log("Game got clicked tile event with index " + tileIdx);
+    // console.log("Game got clicked tile event with index " + tileIdx);
 
     let newBoard = this.state.board.slice();
     newBoard[tileIdx] = this.state.playerMark;
@@ -57,7 +57,8 @@ class Game extends React.Component {
     const result = GameStep(newBoard, this.state.symbols,
       this.state.difficulty);
 
-    if (result.winner) {
+    if (result.winner === 'huPlayer' ||
+        (result.winner === 'draw' && this.isBoardFull(newBoard))) {
       this.setState({
         gameState: gameStates.gameOver,
         winner: result.winner,
@@ -72,6 +73,18 @@ class Game extends React.Component {
     }
   }
 
+  isBoardFull(board) {
+    let count = board.reduce((acc, val) => {
+      if (val === MARK_X || val === MARK_O) {
+        return acc + 1;
+      } else {
+        return acc;
+      }
+    }, 0);
+
+    return count === 9;
+  }
+
   get controlsComponent() {
     switch (this.state.gameState) {
       case gameStates.newGame:
@@ -79,7 +92,6 @@ class Game extends React.Component {
       case gameStates.playing:
         return <TurnTracker turn={this.state.currentTurn} />;
       case gameStates.gameOver:
-        console.log(this.state);
         return <div>Game Over!</div>;
       default:
         return null;
@@ -103,15 +115,18 @@ class Game extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("Game did update");
+    // console.log("Game did update");
+    // console.log(this.state);
     if (this.state.gameState === gameStates.playing &&
         this.state.currentTurn === gamePlayers.computer) {
-      console.log("Game starting computer move");
+      // console.log("Game starting computer move");
       // set timeout for computer move
       setTimeout(() => {
         // apply minimax game step
         const result = GameStep(this.state.board, this.state.symbols,
           this.state.difficulty);
+
+        //console.log(result);
 
         if (result.winner) {
           this.setState({

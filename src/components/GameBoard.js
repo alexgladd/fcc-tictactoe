@@ -21,7 +21,7 @@ class GameBoard extends React.Component {
   }
 
   render () {
-    console.log("GameBoard render");
+    // console.log("GameBoard render");
     const tiles = this.props.tiles.map((tile, idx) => {
       return this.renderTile(tile, idx);
     });

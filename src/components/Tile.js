@@ -10,7 +10,7 @@ class Tile extends React.Component {
   }
 
   handleClick() {
-    console.log("Tile " + this.props.tileIdx + " clicked");
+    // console.log("Tile " + this.props.tileIdx + " clicked");
     this.props.onClick(this.props.tileIdx);
   }
 
