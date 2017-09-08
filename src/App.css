@@ -21,5 +21,6 @@
 
 .Footer {
   grid-area: footer;
+  margin-top: 12px;
   text-align: center;
 }

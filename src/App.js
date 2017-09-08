@@ -12,7 +12,7 @@ class App extends Component {
         </div>
         <Game />
         <div className="Footer">
-          Footer placeholder
+          <i className="fa fa-github fa-lg"></i> by <a href="https://github.com/alexgladd/fcc-tictactoe">Alex Gladd</a>
         </div>
       </div>
     );
