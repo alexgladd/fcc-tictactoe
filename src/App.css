@@ -1,12 +1,19 @@
 .App {
   display: grid;
   grid-gap: 12px;
-  grid-template-columns: 1fr 660px 1fr;
-  grid-template-rows: 60px 660px 1fr;
+  grid-template-columns: 1fr 90vmin 1fr;
+  grid-template-rows: 20vmin 90vmin 1fr;
   grid-template-areas:
     "header header header"
     "....... game ......."
     "footer footer footer";
+}
+
+@media (min-width: 768px) {
+  .App {
+    grid-template-columns: 1fr 660px 1fr;
+    grid-template-rows: 60px 660px 1fr;
+  }
 }
 
 .Header {

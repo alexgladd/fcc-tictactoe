@@ -2,9 +2,15 @@
   grid-area: game;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 25vmin 1fr;
   grid-gap: 12px;
   grid-template-areas:
     "controls"
     "board";
+}
+
+@media (min-width: 768px) {
+  .Game {
+    grid-template-rows: 60px 1fr;
+  }
 }
